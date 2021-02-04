@@ -15,7 +15,7 @@ function createPost(message, codeFileName) {
 }
 
 async function getPosts(page, limit) {
-  const posts = await postsController.readDirectory();
+  const posts = await postsController.readDirectory(limit);
   return {
     posts,
     meta: {

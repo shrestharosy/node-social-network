@@ -1,10 +1,10 @@
 const fs = require('fs');
 
-async function readDirectory() {
+async function readDirectory(limit) {
   const pathToDirectory = 'public/uploads';
   try {
     const files = await fs.readdirSync(pathToDirectory);
-    return files.map((file) => ({
+    return files.slice(0, limit).map((file) => ({
       codeFileName: file,
     }));
   } catch (error) {
