@@ -26,15 +26,19 @@ router.post(
   }
 );
 
-router.get('/', async (req, res, next) => {
-  try {
-    const { page, limit } = req.query;
-    const posts = await crud.getPosts(page, limit);
-    res.json(posts);
-  } catch (error) {
-    next(error);
+router.get(
+  '/',
+
+  async (req, res, next) => {
+    try {
+      const { page = 0, limit = 10 } = req.query;
+      const posts = await crud.getPosts(page, limit);
+      res.json(posts);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 router.use((err, req, res, next) => {
   if (err instanceof InvalidFileError) {

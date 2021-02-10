@@ -14,7 +14,6 @@ async function readDirectory(limit) {
 
 async function readFileOfDirectory(pathToFile) {
   try {
-    console.log();
     const fileContent = await fs.readFileSync(pathToFile, 'utf8');
     return fileContent;
   } catch (error) {
